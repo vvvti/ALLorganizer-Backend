@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'main',
     'analyses',
     'pharmacy',
+    'protocols',
 ]
 
 MIDDLEWARE = [
