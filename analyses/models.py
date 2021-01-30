@@ -2,9 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-class CrpAnalysis(models.Model):  
-    crp_date = models.DateTimeField(
-        "data i godzina badania", default=timezone.now)
+class CrpAnalysis(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
+    crp_date = models.DateField(
+        "Data badania")
+    crp_time = models.TimeField("Godzina badania", auto_now=False, auto_now_add=False)
     crp_count = models.DecimalField(
         "Wynik CRP", max_digits=4, decimal_places=2)
     is_active = models.BooleanField
@@ -22,8 +24,9 @@ class CrpAnalysis(models.Model):
 
 class CompleteBloodCount(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cbc_date = models.DateTimeField(
-        "Data i godzina badania", default=timezone.now)
+    cbc_date = models.DateField(
+        "Data badania")
+    cbc_time = models.TimeField("Godzina badania", auto_now=False, auto_now_add=False)
     leucocyte_count = models.DecimalField(
         "Liczba leukocytów", max_digits=8, decimal_places=2)
     erythrocyte_count = models.DecimalField(
@@ -50,6 +53,8 @@ class CompleteBloodCount(models.Model):
         "MPV", blank=True, null=True, max_digits=3, decimal_places=1)
     p_lcr = models.DecimalField(
         "P-LCR", blank=True, null=True, max_digits=3, decimal_places=1)
+    pct = models.DecimalField(
+        "PCT", blank=True, null=True, max_digits=3, decimal_places=1)
     neutrophils = models.DecimalField(
         "Neutrofile", max_digits=3, decimal_places=1)
     lymphocytes = models.DecimalField(
@@ -75,8 +80,9 @@ class CompleteBloodCount(models.Model):
 
 class ALT_AST(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    alt_ast_date = models.DateTimeField(
-        "Data i godzina badania", default=timezone.now,)
+    alt_ast_date = models.DateField(
+        "Data badania")
+    alt_ast_time = models.TimeField("Godzina badania", auto_now=False, auto_now_add=False)
     alt = models.DecimalField("ALT", max_digits=4, decimal_places=0)
     ast = models.DecimalField("AST", max_digits=4, decimal_places=0)    
     is_active = models.BooleanField
@@ -94,8 +100,9 @@ class ALT_AST(models.Model):
 
 class UrineAnalisis(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    urine_date = models.DateTimeField(
-        "Data i godzina badania", default=timezone.now,)
+    urine_date = models.DateField(
+        "Data badania")
+    urine_time = models.TimeField("Godzina badania", auto_now=False, auto_now_add=False)
     color = models.CharField("Kolor", max_length=45)
     specific_gravity = models.DecimalField(
         "Ciężar właściwy", max_digits=5, decimal_places=4)
