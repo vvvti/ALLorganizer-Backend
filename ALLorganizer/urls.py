@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('analyses.urls')),
+    path('', include('pharmacy.urls')),
 ]
 
 if settings.DEBUG:
