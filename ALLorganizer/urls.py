@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('', include('analyses.urls')),
     path('', include('pharmacy.urls')),
+    path('', include('protocols.urls')),
 ]
 
 if settings.DEBUG:
