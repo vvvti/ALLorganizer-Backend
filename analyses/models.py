@@ -65,6 +65,20 @@ class CompleteBloodCount(models.Model):
         "Eozynofile", blank=True, null=True, max_digits=3, decimal_places=1)
     baso = models.DecimalField(
         "Bazofile", blank=True, null=True, max_digits=3, decimal_places=1)
+    neutrophils_percent = models.DecimalField(
+        "Neutrofile procentowo", max_digits=3, decimal_places=1)
+    lymphocytes_percent = models.DecimalField(
+        "Limfocyty procentowo", blank=True, null=True, max_digits=3, decimal_places=1)
+    monocytes_percent = models.DecimalField(
+        "Monocyty procentowo", blank=True, null=True, max_digits=3, decimal_places=1)
+    eosinophils_percent = models.DecimalField(
+        "Eozynofile procentowo", blank=True, null=True, max_digits=3, decimal_places=1)
+    baso_percent = models.DecimalField(
+        "Bazofile procentowo", blank=True, null=True, max_digits=3, decimal_places=1)
+    nrbc_percent = models.DecimalField(
+        "NRBC procentowo", blank=True, null=True, max_digits=3, decimal_places=1)
+    nrbc = models.DecimalField(
+        "NRBC", blank=True, null=True, max_digits=3, decimal_places=1)
     notes = models.CharField("Uwagi", max_length=200, blank=True)    
     is_active = models.BooleanField
     created = models.DateTimeField(auto_now_add=True)
